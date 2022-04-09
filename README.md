@@ -1,2 +1,4 @@
 # microcluidicController
-Microfluidic Lab software
+Microfluidic Lab  sotware
+
+Requirements: Mysql, Python

@@ -13,11 +13,24 @@ from PyQt5.QtCore import QTimer
 
 # from ui_main_window import *
 def controlImage():
-        cap = cv2.VideoCapture(2)
-        viewCam(cap)
-            
+    if not timer.isActive():
+        # create video capture
+        cap = cv2.VideoCapture(0)
+        # start timer
+        timer.start(20)
+        # update control_bt text
+        formulario.control_bt.setText("Stop")
+        viewCam()
+    # if timer is started
+    else:
+        # stop timer
+        timer.stop()
+        # release video capture
+        # cap.release()
+        # update control_bt text
+        formulario.control_bt.setText("Capture")
 
-def viewCam(cap):
+def viewCam():
         # read image in BGR format
         ret, image = cap.read()
         # convert image to RGB format
@@ -47,7 +60,10 @@ formulario.show()
 formulario.horizontalSlider.valueChanged.connect(updateLabel3)
 formulario.horizontalSlider_2.valueChanged.connect(updateLabel4)
 
-
+timer = QTimer()
+# set timer timeout callback function
+timer.timeout.connect(viewCam)
+cap = cv2.VideoCapture(0)
 # timer.timeout.connect(viewCam(cap))
 formulario.control_bt.clicked.connect(controlImage)
 

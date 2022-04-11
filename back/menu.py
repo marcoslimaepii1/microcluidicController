@@ -48,7 +48,7 @@ def updateLabel3(value):
     if vlib == False and formulario.checkBox.isChecked():
         import RPi.GPIO as GPIO
         GPIO.setmode(GPIO.BOARD)
-        my_pwm.setup(11, GPIO.OUT)
+        GPIO.setup(11, GPIO.OUT)
         my_pwm = GPIO.PWM(11,10)
         my_pwm.start(50)
      

@@ -52,18 +52,22 @@ def updateLabel3(value):
         my_pwm.start(50)
      
     if formulario.radioButton.isChecked():
-       formulario.horizontalSlider.setMinimum(0)
+       formulario.horizontalSlider.setMinimum(1)
        formulario.horizontalSlider.setMaximum(192000)
+       if formulario.checkBox.isChecked():
+            my_pwm.ChangeFrequency(value)
+
     elif formulario.radioButton_2.isChecked():   
-       formulario.horizontalSlider.setMinimum(0)
-       formulario.horizontalSlider.setMaximum(19) 
+       formulario.horizontalSlider.setMinimum(1)
+       formulario.horizontalSlider.setMaximum(19)
+       if formulario.checkBox.isChecked():
+          my_pwm.ChangeFrequency(value * 1000000)
+ 
     else:
-       formulario.horizontalSlider.setMinimum(0)
-       formulario.horizontalSlider.setMaximum(0) 
+       formulario.horizontalSlider.setMinimum(1)
+       formulario.horizontalSlider.setMaximum(1) 
            
     formulario.label_3.setText(str(str(value)))
-    if formulario.checkBox.isChecked():
-        my_pwm.ChangeFrequency(value)
     
     formulario.label_3.setAlignment(Qt.AlignCenter)
     

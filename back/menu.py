@@ -43,8 +43,14 @@ def viewCam():
         # show image in img_label
         formulario.image_label.setPixmap(QPixmap.fromImage(qImg))
 
-def updateLabel3(value):
+def updateLabel3(value):   
     
+    if vlib == False and formulario.checkBox.isChecked():
+        import RPi.GPIO as GPIO
+        GPIO.setmode(GPIO.BOARD)
+        my_pwm = GPIO.PWM(11,10)
+        my_pwm.start(50)
+     
     if formulario.radioButton.isChecked():
        formulario.horizontalSlider.setMinimum(0)
        formulario.horizontalSlider.setMaximum(192000)
@@ -56,6 +62,9 @@ def updateLabel3(value):
        formulario.horizontalSlider.setMaximum(0) 
            
     formulario.label_3.setText(str(str(value)))
+    if formulario.checkBox.isChecked():
+        my_pwm.ChangeFrequency(value)
+    
     formulario.label_3.setAlignment(Qt.AlignCenter)
     
 def updateLabel4(value):
@@ -66,15 +75,15 @@ app = QtWidgets.QApplication([])
 formulario = uic.loadUi("../front/menu.ui")
 formulario.label_3.setAlignment(Qt.AlignCenter)
 
+vlib = False
+
 formulario.show()
 formulario.horizontalSlider.valueChanged.connect(updateLabel3)
-# formulario.horizontalSlider_2.valueChanged.connect(updateLabel4)
+
 
 timer = QTimer()
-# set timer timeout callback function
 timer.timeout.connect(viewCam)
 cap = cv2.VideoCapture(0)
-# timer.timeout.connect(viewCam(cap))
 formulario.control_bt.clicked.connect(controlImage)
 
 

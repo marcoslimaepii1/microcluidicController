@@ -40,6 +40,9 @@
      </property>
     </widget>
     <widget class="QRadioButton" name="radioButton">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -51,7 +54,13 @@
      <property name="text">
       <string>Khz</string>
      </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
      <property name="checked">
+      <bool>false</bool>
+     </property>
+     <property name="autoExclusive">
       <bool>true</bool>
      </property>
     </widget>
@@ -73,7 +82,7 @@
       <rect>
        <x>0</x>
        <y>100</y>
-       <width>241</width>
+       <width>251</width>
        <height>28</height>
       </rect>
      </property>
@@ -113,52 +122,19 @@
       <string/>
      </property>
     </widget>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>390</y>
-      <width>58</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Voltage</string>
-    </property>
-   </widget>
-   <widget class="QSlider" name="horizontalSlider_2">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>430</y>
-      <width>241</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>480</y>
-      <width>231</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>43</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
+    <widget class="QCheckBox" name="checkBox">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>0</y>
+       <width>87</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Activate</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QLabel" name="image_label">
     <property name="geometry">
